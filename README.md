@@ -333,7 +333,7 @@ Período Académico: Segundo Semestre
 
 Este proyecto fue desarrollado con fines académicos como parte del currículo de la **Universidad Politécnica Salesiana**. El código se distribuye bajo los términos de la **Licencia MIT**, que permite su uso, modificación y distribución para fines educativos y comerciales.
 
-**© 2024 Universidad Politécnica Salesiana - Todos los derechos reservados para fines académicos.**
+**© 2025 Universidad Politécnica Salesiana - Todos los derechos reservados para fines académicos.**
 
 ---
 
