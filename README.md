@@ -259,77 +259,6 @@ git commit -m "refactor(controlador): mejorar validación de entradas"
 - `style`: Formato (sin cambios funcionales)
 - `test`: Pruebas
 
-## 🎓 Criterios de Evaluación Académica
-
-### **Rúbrica de Calificación**
-| Criterio | Ponderación | Implementación |
-|----------|-------------|----------------|
-| Implementación POO | 10% | ✅ Encapsulamiento completo |
-| Relaciones entre Clases | 15% | ✅ MVC correctamente implementado |
-| Patrón MVC | 10% | ✅ Separación clara de capas |
-| Manejo de Excepciones | 15% | ✅ 3 excepciones personalizadas |
-| Persistencia de Datos | 10% | ✅ Serialización + archivos de texto |
-| Calidad de Código | 15% | ✅ Código limpio y documentado |
-| Funcionalidad Completa | 10% | ✅ Juego totalmente funcional |
-| Documentación | 10% | ✅ README completo + comentarios |
-| Uso de GitHub | 5% | ✅ Repositorio estructurado |
-| **Total** | **100%** | **✅ PROYECTO COMPLETADO** |
-
-## 🔄 Flujo de Desarrollo
-
-### **Ciclo de Vida del Juego**
-```
-┌─────────────────────────────────────────────────┐
-│           FLUJO DE EJECUCIÓN DEL JUEGO          │
-├─────────────────────────────────────────────────┤
-│  1. main.java → Inicializa ControladorJuego     │
-│  2. ControladorJuego → Muestra menú principal   │
-│  3. Usuario selecciona: Nuevo/Cargar/Estadíst.  │
-│  4. Juego crea Tablero + Jugador                │
-│  5. Loop de juego:                              │
-│     a) VistaConsola muestra tablero             │
-│     b) Usuario ingresa coordenadas              │
-│     c) ControladorJuego valida entrada          │
-│     d) Juego procesa jugada                     │
-│     e) Tablero actualiza estado                 │
-│     f) Verificar victoria/derrota               │
-│  6. Fin de juego → Actualizar estadísticas      │
-│  7. Opción de guardar/volver al menú            │
-└─────────────────────────────────────────────────┘
-```
-
-## 📈 Extensibilidad y Mejoras Futuras
-
-### **Roadmap de Desarrollo**
-- [x] **Fase 1**: Implementación base con consola
-- [ ] **Fase 2**: Interfaz gráfica con JavaFX/Swing
-- [ ] **Fase 3**: Niveles de dificultad (Fácil/Medio/Difícil)
-- [ ] **Fase 4**: Sistema de puntuación con tiempo
-- [ ] **Fase 5**: Modo multijugador
-- [ ] **Fase 6**: Tabla de clasificación global
-- [ ] **Fase 7**: Integración con base de datos (MySQL/PostgreSQL)
-
-### **Posibles Mejoras Técnicas**
-```java
-// Arquitectura para extensión de dificultades
-public interface NivelDificultad {
-    int getFilas();
-    int getColumnas();
-    int getCantidadMinas();
-}
-
-public class NivelFacil implements NivelDificultad {
-    public int getFilas() { return 8; }
-    public int getColumnas() { return 8; }
-    public int getCantidadMinas() { return 6; }
-}
-
-public class NivelDificil implements NivelDificultad {
-    public int getFilas() { return 15; }
-    public int getColumnas() { return 15; }
-    public int getCantidadMinas() { return 30; }
-}
-```
 
 ## 👥 Contribución al Proyecto
 
@@ -364,21 +293,19 @@ public class NivelDificil implements NivelDificultad {
 ## 🏆 Reconocimientos
 
 ### **Equipo de Desarrollo**
-| Rol | Responsabilidades |
-|-----|-------------------|
-| Desarrollo Completo | Implementación de arquitectura MVC |
-| Diseño de Modelo | Clases Juego, Tablero, Casilla, Jugador |
-| Implementación de Vista | VistaConsola con interfaz de texto |
-| Desarrollo de Controlador | ControladorJuego con gestión de flujo |
-| Sistema de Persistencia | GestorGuardado con serialización |
-| Manejo de Excepciones | 3 excepciones personalizadas |
+| Rol | Nombre | Contribuciones Principales |
+|-----|--------|----------------------------|
+| Desarrollador | Anthony Pilatasig | Arquitectura, Coordinación |
+| Desarrollador  |  | Modelo, Persistencia |
+| Desarrollador  |  | Vista, Interfaz de Usuario |
+| Desarrollador |  | Pruebas, Calidad de Código |
 
 ### **Institución Académica**
 **Universidad Politécnica Salesiana**  
 Facultad de Ingeniería de Sistemas  
 Asignatura: Programación Orientada a Objetos  
-Docente: [Nombre del Profesor]  
-Período Académico: [Semestre/Año]
+Docente: Gustavo Navas Ruilova
+Período Académico: Segundo Semestre
 
 ## 🎯 Características Destacadas del Proyecto
 
