@@ -3,7 +3,7 @@ package controlador;
 import modelo.Juego;
 import modelo.Tablero;
 import modelo.Casilla;
-import excepciones.*;
+import excepciones.*; // CasillaYaDescubiertaException, EntradaInvalidaException, EntradaFueraDeRangoException, JuegoGuardadoException, JugadorSinNombreException
 import persistencia.GestorGuardado;
 import vista.VistaConsola;
 
@@ -70,7 +70,7 @@ public class ControladorJuego {
                 juego = new Juego(nombre);   // puede lanzar JugadorSinNombreException
                 nombreValido = true;          // si no lanzó, el nombre es válido
             } catch (JugadorSinNombreException e) {
-                System.out.println(e.getMessage()); // "El jugador debe ingresar un nombre para continuar."
+                System.out.println(e.getMessage());
                 // vuelve al while y pide de nuevo el nombre
             }
         }
@@ -104,6 +104,8 @@ public class ControladorJuego {
                 System.out.println("Error: " + e.getMessage());
             } catch (CasillaYaDescubiertaException e) {
                 System.out.println("Error: " + e.getMessage());
+            } catch (EntradaFueraDeRangoException e) {
+                System.out.println("Error: " + e.getMessage());
             }
 
             if (!juego.estaEnJuego()) {
@@ -118,7 +120,7 @@ public class ControladorJuego {
     }
 
     private void procesarEntrada(String entrada)
-            throws EntradaInvalidaException, CasillaYaDescubiertaException {
+            throws EntradaInvalidaException, CasillaYaDescubiertaException, EntradaFueraDeRangoException {
 
         if (entrada.equalsIgnoreCase("SALIR")) {
             System.out.println("Saliendo del juego...");
@@ -131,7 +133,7 @@ public class ControladorJuego {
             vista.mostrarInstrucciones();
         } else if (entrada.equalsIgnoreCase("ESTADISTICAS")) {
             mostrarEstadisticasJuego();
-        } else if (entrada.matches("[A-J][0-9]M?")) {
+        } else if (entrada.matches("[A-Z][0-9]M?")) { // ahora acepta cualquier letra, rango se valida en procesarJugada
             procesarJugada(entrada);
         } else {
             throw new EntradaInvalidaException("Formato inválido. Usa A5 o A5M");
@@ -139,18 +141,20 @@ public class ControladorJuego {
     }
 
     private void procesarJugada(String entrada)
-            throws CasillaYaDescubiertaException, EntradaInvalidaException {
+            throws CasillaYaDescubiertaException, EntradaInvalidaException, EntradaFueraDeRangoException {
 
         char letraColumna = entrada.charAt(0);
         char digitoFila = entrada.charAt(1);
         boolean esMarca = entrada.length() == 3 && entrada.charAt(2) == 'M';
 
-        int columna = letraColumna - 'A';
-        int fila = Character.getNumericValue(digitoFila);
+        int columna = letraColumna - 'A';                 // A=0..J=9
+        int fila = Character.getNumericValue(digitoFila); // 0..9
 
-        if (fila < 0 || fila >= juego.getTablero().getFilas()
-                || columna < 0 || columna >= juego.getTablero().getColumnas()) {
-            throw new EntradaInvalidaException("Coordenadas fuera del tablero");
+        // Validación específica A–J y 0–9
+        if (fila < 0 || fila > 9 || columna < 0 || columna > 9) {
+            throw new EntradaFueraDeRangoException(
+                    "Coordenadas fuera de rango. Usa letras A-J y números 0-9."
+            );
         }
 
         Casilla casilla = juego.getTablero().getCasillas()[fila][columna];
