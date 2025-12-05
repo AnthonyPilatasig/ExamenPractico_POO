@@ -7,8 +7,10 @@ import modelo.Tablero;
 import modelo.Juego;
 import modelo.Jugador;
 import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestControlador {
@@ -23,7 +25,7 @@ public class TestControlador {
     public void procesarEntrada_formatoValidoDescubrir_noLanzaExcepcion() throws Exception {
         ControladorJuego controlador = new ControladorJuego();
         Tablero tablero = new Tablero();
-        
+
         for (int i = 0; i < tablero.getFilas(); i++) {
             for (int j = 0; j < tablero.getColumnas(); j++) {
                 tablero.getCasillas()[i][j].setTieneMina(false);
@@ -32,6 +34,7 @@ public class TestControlador {
                 tablero.getCasillas()[i][j].setMarcada(false);
             }
         }
+
         Jugador jugador = new Jugador("Test");
         Juego juego = new Juego(tablero, jugador);
 
@@ -45,7 +48,6 @@ public class TestControlador {
             try {
                 metodo.invoke(controlador, "A0");
             } catch (InvocationTargetException ite) {
-
                 throw ite.getTargetException();
             }
         });
@@ -64,13 +66,15 @@ public class TestControlador {
                 tablero.getCasillas()[i][j].setMarcada(false);
             }
         }
+
         Juego juego = new Juego(tablero, new Jugador("T"));
+
         java.lang.reflect.Field campoJuego = ControladorJuego.class.getDeclaredField("juego");
         campoJuego.setAccessible(true);
         campoJuego.set(controlador, juego);
 
         Method metodo = obtenerMetodoProcesarEntrada(controlador);
- 
+
         assertDoesNotThrow(() -> {
             try {
                 metodo.invoke(controlador, "A0M");
@@ -88,7 +92,7 @@ public class TestControlador {
         Method metodo = obtenerMetodoProcesarEntrada(controlador);
 
         InvocationTargetException thrown = assertThrows(InvocationTargetException.class, () -> {
-            metodo.invoke(controlador, "INVALID"); 
+            metodo.invoke(controlador, "INVALID");
         });
 
         Throwable target = thrown.getTargetException();
@@ -108,9 +112,11 @@ public class TestControlador {
                 tablero.getCasillas()[i][j].setMarcada(false);
             }
         }
+
         tablero.getCasillas()[0][0].setDescubierta(true);
 
         Juego juego = new Juego(tablero, new Jugador("T"));
+
         java.lang.reflect.Field campoJuego = ControladorJuego.class.getDeclaredField("juego");
         campoJuego.setAccessible(true);
         campoJuego.set(controlador, juego);

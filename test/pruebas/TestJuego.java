@@ -89,6 +89,7 @@ public class TestJuego {
                 tablero.getCasillas()[i][j].setMinasAlrededor(contador);
             }
         }
+
         Jugador jugador = new Jugador("J");
         Juego juego = new Juego(tablero, jugador);
 
