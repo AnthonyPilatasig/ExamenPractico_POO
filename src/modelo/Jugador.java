@@ -1,6 +1,7 @@
 package modelo;
 
 import java.io.Serializable;
+import excepciones.JugadorSinNombreException;
 
 public class Jugador implements Serializable {
 	
@@ -9,12 +10,14 @@ public class Jugador implements Serializable {
     private int partidasGanadas;
     private int partidasPerdidas;
     
-    public Jugador(String nombre) {
+    public Jugador(String nombre) throws JugadorSinNombreException {
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new JugadorSinNombreException();
+        }
         this.nombre = nombre;
         this.partidasGanadas = 0;
         this.partidasPerdidas = 0;
     }
-    
     // Getters y Setters
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }

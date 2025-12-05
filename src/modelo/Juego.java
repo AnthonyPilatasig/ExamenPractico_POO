@@ -1,40 +1,39 @@
 package modelo;
 
 import java.io.Serializable;
+import excepciones.JugadorSinNombreException;
 
 public class Juego implements Serializable {
-	
-	private static final long seriaVersionUID = 1L;
+
+    private static final long serialVersionUID = 1L;
     private Tablero tablero;
     private Jugador jugador;
     private boolean enJuego;
     private boolean juegoGanado;
-    
-    public Juego(String nombreJugador) {
+
+    public Juego(String nombreJugador) throws JugadorSinNombreException {
         this.tablero = new Tablero();
-        this.jugador = new Jugador(nombreJugador);
+        this.jugador = new Jugador(nombreJugador); // aquí puede lanzarse la excepción
         this.enJuego = true;
         this.juegoGanado = false;
     }
-    
+
     public Juego(Tablero tablero, Jugador jugador) {
         this.tablero = tablero;
         this.jugador = jugador;
         this.enJuego = true;
         this.juegoGanado = false;
     }
-    
     public boolean realizarJugada(int fila, int columna, boolean esMarca) {
         if (!enJuego) {
             return false;
         }
-        
         if (esMarca) {
             tablero.marcarCasilla(fila, columna);
             return false;
         } else {
             boolean perdio = tablero.descubrirCasilla(fila, columna);
-            
+
             if (perdio) {
                 enJuego = false;
                 juegoGanado = false;
@@ -42,7 +41,6 @@ public class Juego implements Serializable {
                 tablero.revelarTodasMinas();
                 return true;
             }
-            
             if (tablero.juegoGanado()) {
                 enJuego = false;
                 juegoGanado = true;
@@ -52,7 +50,6 @@ public class Juego implements Serializable {
         }
         return false;
     }
-    
     // Getters
     public Tablero getTablero() { return tablero; }
     public Jugador getJugador() { return jugador; }
