@@ -296,8 +296,8 @@ git commit -m "refactor(controlador): mejorar validación de entradas"
 | Rol | Nombre | Contribuciones Principales |
 |-----|--------|----------------------------|
 | Desarrollador | Anthony Pilatasig | Arquitectura, Coordinación |
-| Desarrollador  Wilson Uribe|  | Modelo, Persistencia |
-| Desarrollador  |  Gabriel Monteros| Vista, Interfaz de Usuario |
+| Desarrollador |Wilson Uribe  | Modelo, Persistencia |
+| Desarrollador |  Gabriel Monteros| Vista, Interfaz de Usuario |
 | Desarrollador | Alex Lupercio | Pruebas, Calidad de Código |
 
 ### **Institución Académica**
