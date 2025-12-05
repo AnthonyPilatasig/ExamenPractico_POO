@@ -298,7 +298,7 @@ git commit -m "refactor(controlador): mejorar validación de entradas"
 | Desarrollador | Anthony Pilatasig | Arquitectura, Coordinación |
 | Desarrollador  |  | Modelo, Persistencia |
 | Desarrollador  |  | Vista, Interfaz de Usuario |
-| Desarrollador | Alex | Pruebas, Calidad de Código |
+| Desarrollador | Alex Lupercio | Pruebas, Calidad de Código |
 
 ### **Institución Académica**
 **Universidad Politécnica Salesiana**  
