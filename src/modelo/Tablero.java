@@ -1,8 +1,11 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Tablero {
+public class Tablero implements Serializable {
+	
+	private static final long serialVeraionUID = 1L;
     private static final int FILAS = 10;
     private static final int COLUMNAS = 10;
     private static final int MINAS = 10;

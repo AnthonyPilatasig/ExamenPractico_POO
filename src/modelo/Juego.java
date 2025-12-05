@@ -3,6 +3,8 @@ package modelo;
 import java.io.Serializable;
 
 public class Juego implements Serializable {
+	
+	private static final long seriaVersionUID = 1L;
     private Tablero tablero;
     private Jugador jugador;
     private boolean enJuego;
